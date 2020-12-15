@@ -3,7 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import todoStorage from './plugins/todoStorage'
 
+Vue.use(todoStorage)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
