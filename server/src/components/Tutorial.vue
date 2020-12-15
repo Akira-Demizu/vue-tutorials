@@ -38,12 +38,30 @@
 </template>
 
 <script>
+import todoStorage from '../plugins/todoStorage'
+
 export default {
   name: 'Tutorial',
   data () {
     return {
       todos: [],
       uid: 0
+    }
+  },
+  created () {
+    // インスタンス作成時に自動的に fetch() する
+    this.todos = todoStorage.fetch()
+    this.uid = this.todos.length
+  },
+  watch: {
+    // オプションを使う場合はオブジェクト形式にする
+    todos: {
+      // 引数はウォッチしているプロパティの変更後の値
+      handler: function (todos) {
+        todoStorage.save(todos)
+      },
+      // deep オプションでネストしているデータも監視できる
+      deep: true
     }
   },
   methods: {
