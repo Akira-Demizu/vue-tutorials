@@ -16,12 +16,14 @@
         <th>{{ item.id }}</th>
         <td>{{ item.comment }}</td>
         <td class="state">
-          <!-- 状態変更ボタンのモック -->
-          <button>{{ item.state }}</button>
+          <button v-on:click="doChangeState(item)">
+            {{ item.state }}
+          </button>
         </td>
         <td class="button">
-          <!-- 削除ボタンのモック -->
-          <button>削除</button>
+          <button v-on:click="doRemove(item)">
+            削除
+          </button>
         </td>
       </tr>
       </tbody>
@@ -83,6 +85,15 @@ export default {
       })
       // フォーム要素を空にする
       comment.value = ''
+    },
+    // 状態変更の処理
+    doChangeState: function (item) {
+      item.state = item.state ? 0 : 1
+    },
+    // 削除の処理
+    doRemove: function (item) {
+      const index = this.todos.indexOf(item)
+      this.todos.splice(index, 1)
     }
   }
 }
