@@ -42,7 +42,8 @@ export default {
   name: 'Tutorial',
   data () {
     return {
-      todos: []
+      todos: [],
+      uid: 0
     }
   },
   methods: {
@@ -58,7 +59,7 @@ export default {
       // というオブジェクトを現在の todos リストへ push
       // 作業状態「state」はデフォルト「作業中=0」で作成
       this.todos.push({
-        id: this.todoStorage.uid++,
+        id: this.uid++,
         comment: comment.value,
         state: 0
       })
