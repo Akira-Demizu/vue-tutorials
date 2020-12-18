@@ -17,3 +17,6 @@ npm update
 // npm 実行
 npm run dev
 ```
+
+### アクセス
+http://localhost:8080
